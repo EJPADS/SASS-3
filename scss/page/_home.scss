@@ -1,0 +1,85 @@
+@use '../abstract' as *;
+@use '../base' as *;
+@use '../component' as *;
+@use '../layout' as *;
+@use '../vendor' as *;
+
+.banner {
+    img {
+        @include imgCover(300px, 100%)
+    }
+
+   p {
+    display: none;
+   }
+
+   @include mediaQuery {
+        &__wrapper {
+            @include unevenGrid(2fr 1fr, 2rem);
+        }
+
+        &__main {
+            border-right: 1px solid $clr-dark;
+            padding-right: 2rem;
+            img {
+                height: 50rem;
+            }
+        }
+
+        &__side {
+            img {
+                height: 20rem;
+            }
+            p {
+                display: none!important;
+            }
+        }
+        p {
+            display: block;
+        }
+   }
+}
+
+.cta {
+    border-top: 1px solid $clr-dark;
+    border-bottom: 1px solid $clr-dark;
+    padding: 4rem 0;
+    ul {
+        @include flex(center, center);
+        flex-direction: column;
+        @include mediaQuery {
+            flex-direction: row;
+            gap: 3rem;
+        }
+    }
+
+    li {
+        width: 100%;
+        @include mediaQuery {
+            width: auto;
+        }
+    }
+
+    a {
+        min-width: 120px;
+        padding: 1.5rem;
+        background: $clr-dark;
+        color: $clr-light;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 2rem;
+        @include mediaQuery {
+            display: inline-block;
+        }
+    }
+}
+
+.articles {
+    @include mediaQuery {
+        &__card {
+            @include flex;
+            gap: 4rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
